@@ -47,7 +47,7 @@ const DocumentViewPage = () => {
   );
 
   return (
-    <div className="flex flex-col min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="flex flex-col min-h-screen bg-background">
       <AppHeader isAuthenticated={true} />
       <main className="flex-1 container mx-auto py-8 px-4">
         <div className="max-w-4xl mx-auto">
