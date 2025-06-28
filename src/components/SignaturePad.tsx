@@ -24,7 +24,9 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ onConfirm }) => {
       const ctx = canvas.getContext('2d');
       if (ctx) {
         ctx.scale(ratio, ratio);
-        ctx.strokeStyle = '#000000';
+        // Use a light stroke color for dark theme
+        const strokeColor = getComputedStyle(document.documentElement).getPropertyValue('--foreground');
+        ctx.strokeStyle = `hsl(${strokeColor.trim()})`;
         ctx.lineWidth = 2;
         ctx.lineCap = 'round';
         ctx.lineJoin = 'round';
@@ -95,7 +97,7 @@ const SignaturePad: React.FC<SignaturePadProps> = ({ onConfirm }) => {
       <CardContent>
         <canvas
           ref={canvasRef}
-          className="w-full h-48 border border-dashed rounded-md bg-gray-50 cursor-crosshair touch-none"
+          className="w-full h-48 border border-dashed rounded-md bg-muted cursor-crosshair touch-none"
           onMouseDown={startDrawing}
           onMouseMove={draw}
           onMouseUp={stopDrawing}
